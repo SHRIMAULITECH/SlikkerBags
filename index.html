@@ -1582,27 +1582,36 @@
 
         // --- CORRECTED/IMPROVED Scroll Animation Logic ---
         const observerOptions = {
-            threshold: 0.1, // Trigger when 10% of the element is visible
-            rootMargin: '0px 0px -50px 0px' // Start checking when element is 50px from bottom of viewport
+            threshold: window.innerWidth <= 768 ? 0.05 : 0.1, // Lower threshold for mobile
+            rootMargin: window.innerWidth <= 768 ? '0px 0px -100px 0px' : '0px 0px -50px 0px' // Larger margin for mobile
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                // If the element is intersecting (visible)
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible'); // Add the 'visible' class to trigger the fade-in
-                    observer.unobserve(entry.target); // Stop observing the element once it's visible
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
                 }
             });
         }, observerOptions);
 
-        // Observe all elements with the 'fade-in' class.
-        // This single, reliable method works for elements that are in view on load AND for elements that appear on scroll.
+        // Observe all elements with the 'fade-in' class
         document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
+            // Check if element is already in viewport on load
+            const rect = el.getBoundingClientRect();
+            const isInViewport = (
+                rect.top >= 0 &&
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+            );
+            if (isInViewport) {
+                el.classList.add('visible');
+                observer.unobserve(el); // No need to observe if already visible
+            } else {
+                observer.observe(el);
+            }
         });
 
-        // --- Modal Functionality (Unchanged) ---
+        // --- Modal Functionality ---
         let currentSlideIndex = 0;
         let currentImages = [];
         let currentTitles = [];
