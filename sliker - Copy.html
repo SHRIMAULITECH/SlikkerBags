@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slikker Bags - Premium American Tourister Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255,255,255,0.5); }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: slideInUp 1s ease-out 0.6s both;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .shop-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .shop-photo {
+            background: #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .shop-photo:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .product-grid-15 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-grid-10 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .product-image {
+            background: #f0f0f0;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .product-card:hover .product-image::before {
+            left: 100%;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid-15 {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .product-grid-10 {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Slikker Bags</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium American Tourister Collection</h1>
+                <p>Discover the finest selection of bags and travel accessories at Slikker Bags. Quality, style, and durability in every piece.</p>
+                <a href="#products" class="cta-button">Explore Our Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about fade-in" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Slikker Bags</h2>
+                    <p>Located in the heart of Navi Mumbai, Slikker Bags is your premier destination for high-quality American Tourister bags and accessories. We pride ourselves on offering an extensive collection of travel bags, backpacks, and luggage that combines style, durability, and functionality.</p>
+                    <p>Our expert team is dedicated to helping you find the perfect bag for every journey, whether it's a business trip, family vacation, or daily commute. With years of experience in the industry, we understand what makes a great bag and are committed to providing exceptional customer service.</p>
+                </div>
+                <div class="shop-photos">
+                    <div class="shop-photo">
+                        <span>Shop Interior Photo 1<br>Replace with your shop image</span>
+                    </div>
+                    <div class="shop-photo">
+                        <span>Shop Interior Photo 2<br>Replace with your shop image</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products fade-in" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Premium Collection</h2>
+            
+            <h3 style="text-align: center; margin-bottom: 2rem; color: #666;">Featured Products</h3>
+            <div class="product-grid-15">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span><img src="Images/Photo1.jpeg"/></span>
+                    </div>
+                    <div class="product-info">
+                        <h3>American Tourister Backpack</h3>
+                        <p>Durable and stylish for daily use</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 2<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Travel Luggage Set</h3>
+                        <p>Perfect for long journeys</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 3<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Business Laptop Bag</h3>
+                        <p>Professional and secure</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 4<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Weekend Duffle Bag</h3>
+                        <p>Compact and convenient</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 5<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rolling Suitcase</h3>
+                        <p>Smooth mobility and style</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 6<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>School Backpack</h3>
+                        <p>Comfortable and spacious</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 7<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Gym Sports Bag</h3>
+                        <p>Durable for active lifestyle</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 8<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cabin Luggage</h3>
+                        <p>Perfect for air travel</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 9<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Messenger Bag</h3>
+                        <p>Stylish urban companion</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 10<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Travel Organizer</h3>
+                        <p>Keep everything in place</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 11<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wheeled Backpack</h3>
+                        <p>Versatile travel solution</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 12<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Hard Shell Suitcase</h3>
+                        <p>Maximum protection</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 13<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Casual Daypack</h3>
+                        <p>Everyday comfort</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 14<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Luggage Set</h3>
+                        <p>Luxury travel collection</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 15<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Compact Travel Bag</h3>
+                        <p>Space-saving design</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin: 4rem 0 2rem; color: #666;">Best Sellers</h3>
+            <div class="product-grid-10">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 16<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Executive Briefcase</h3>
+                        <p>Professional elegance</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 17<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Adventure Backpack</h3>
+                        <p>Built for exploration</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 18<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Designer Handbag</h3>
+                        <p>Fashion meets function</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 19<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Tech Laptop Bag</h3>
+                        <p>Digital age ready</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 20<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Family Travel Set</h3>
+                        <p>Complete family solution</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 21<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Luxury Trolley</h3>
+                        <p>Premium travel experience</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 22<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Student Backpack</h3>
+                        <p>Academic companion</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 23<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Weekend Getaway</h3>
+                        <p>Short trip specialist</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 24<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Professional Tote</h3>
+                        <p>Work and style combined</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span>Product Image 25<br>Replace with bag photo</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Ultimate Travel Companion</h3>
+                        <p>Everything you need</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact fade-in" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Visit Our Store</h2>
+                    <div class="contact-item">
+                        <i>📍</i>
+                        <div>
+                            <strong>Address:</strong><br>
+                            Shop No. 12, Shree Ram Krishna CHS Ltd.<br>
+                            Plot No. 46 & 47, Opp Seawood Grand Central Mall<br>
+                            Sector - 40, Seawoods (W)<br>
+                            Navi Mumbai - 400706
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📱</i>
+                        <div>
+                            <strong>Mobile:</strong><br>
+                            +91 9920745451
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i>📧</i>
+                        <div>
+                            <strong>Email:</strong><br>
+                            slikkerbags@gmail.com
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://facebook.com/slikker_bags" class="social-link">📘</a>
+                        <a href="https://twitter.com/slikker_bags" class="social-link">🐦</a>
+                        <a href="https://instagram.com/slikker_bags" class="social-link">📸</a>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">Follow us on social media: @slikker_bags</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Get in Touch</h3>
+                    <form style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input type="text" placeholder="Your Name" style="padding: 12px; border: none; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
+                        <input type="email" placeholder="Your Email" style="padding: 12px; border: none; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2);">
+                        <textarea placeholder="Your Message" rows="5" style="padding: 12px; border: none; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); resize: vertical;"></textarea>
+                        <button type="submit" style="padding: 12px; background: linear-gradient(45deg, #ff6b6b, #ee5a24); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Slikker Bags. All rights reserved. | Premium American Tourister Collection</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loading').style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Add floating animation to product cards
+        document.querySelectorAll('.product-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Add click effect to CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            .cta-button {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

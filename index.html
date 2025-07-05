@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slikker Bags - Premium American Tourister Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- UI REDESIGN: Modern Font Stack & Base Styles --- */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #4A5568; /* Softer, more professional text color */
+            overflow-x: hidden;
+            background-color: #F7FAFC; /* Clean, light grey background */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            color: #1A202C; /* Darker color for headings */
+            font-weight: 700;
+        }
+
+        /* Header */
+        header {
+            background: rgba(26, 32, 44, 0.8); /* Dark, sophisticated header */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: background 0.4s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea; /* Brand accent color */
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4c51bf 0%, #2c3e50 100%);
+            color: white;
+            padding: 160px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            animation: slideInUp 1s ease-out 0.3s both;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        /* --- UI REDESIGN: New CTA Button Style --- */
+        .cta-button {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            animation: slideInUp 1s ease-out 0.6s both;
+            box-shadow: 0 4px 14px 0 rgba(102, 126, 234, 0.39);
+        }
+        .cta-button:hover {
+            transform: translateY(-4px);
+            background: #5a67d8;
+            box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.5);
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 0;
+            background: #ffffff;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: #667eea;
+            border-radius: 2px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-top: 2.5rem;
+        }
+
+        .shop-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .shop-photo {
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(.25,.8,.25,1);
+            aspect-ratio: 4/3;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+        
+        .shop-photo img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .shop-photo:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .shop-photo:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: ''; position: absolute; bottom: -15px; left: 50%;
+            transform: translateX(-50%); width: 80px; height: 4px;
+            background: #667eea; border-radius: 2px;
+        }
+
+        .product-grid-15, .product-grid-10 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(.25,.8,.25,1); position: relative; cursor: pointer;
+            display: flex; flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .product-image {
+            background: #EDF2F7; aspect-ratio: 1/1;
+            position: relative; overflow: hidden;
+        }
+        .product-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .product-card:hover .product-image img { transform: scale(1.1); }
+        .product-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-info h3 { font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 600; }
+        .product-info p { flex-grow: 1; }
+        
+        /* Image Modal Popup */
+        .image-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 10000; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease; }
+        .image-modal.active { opacity: 1; visibility: visible; }
+        .modal-content { position: relative; max-width: 90vw; max-height: 85vh; transform: scale(0.9) translateY(20px); opacity: 0; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease; }
+        .image-modal.active .modal-content { transform: scale(1) translateY(0); opacity: 1; }
+        .modal-image { width: 100%; height: auto; max-height: 85vh; object-fit: contain; border-radius: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+        .close-modal { position: fixed; top: 20px; right: 30px; background: rgba(255, 255, 255, 0.9); color: #333; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); z-index: 10001; }
+        .close-modal:hover { background: #e53e3e; color: white; transform: scale(1.1) rotate(90deg); }
+
+        /* --- UI REDESIGN: Contact Section --- */
+        .contact {
+            padding: 120px 0;
+            background: #ffffff;
+        }
+        .contact .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+        }
+        .contact-info h2, .contact-form h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        .contact-item i {
+            font-size: 1.5rem; margin-right: 1.5rem; width: 30px;
+            text-align: center; color: #667eea; margin-top: 5px;
+        }
+        .address-link {
+            color: #4A5568; text-decoration: none; position: relative;
+            font-weight: 500; transition: color 0.3s ease;
+        }
+        .address-link:hover { color: #667eea; }
+        .contact-form form input, .contact-form form textarea {
+            width: 100%; padding: 14px; border: 1px solid #E2E8F0 !important;
+            border-radius: 8px; font-size: 1rem; background-color: #F7FAFC;
+            color: #1A202C; transition: all 0.3s ease; font-family: inherit;
+        }
+        .contact-form form input:focus, .contact-form form textarea:focus {
+            outline: none; background-color: #fff;
+            box-shadow: 0 0 0 2px #667eea; border-color: #667eea !important;
+        }
+        
+        /* --- NEW: Clickable Map Wrapper --- */
+        .map-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+        .map-wrapper:hover .map-overlay {
+            opacity: 1;
+        }
+        .map-button {
+            background: white; color: #1A202C; padding: 14px 28px;
+            border-radius: 50px; text-decoration: none; font-weight: 600;
+            box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.3);
+            transform: translateY(10px); transition: transform 0.3s ease;
+            pointer-events: none; /* Button itself isn't clickable, the overlay is */
+        }
+        .map-wrapper:hover .map-button {
+            transform: translateY(0);
+        }
+
+
+        /* Footer */
+        footer {
+            background: #1A202C;
+            color: #A0AEC0;
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-content { grid-template-columns: 1fr; gap: 3rem; }
+            .about-text { text-align: center; }
+            .about-text h2::after { left: 50%; transform: translateX(-50%); }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            h2, .section-title, .contact-info h2, .contact-form h2 { font-size: 2.2rem; }
+            .product-grid-15, .product-grid-10 { grid-template-columns: 1fr; }
+            .header-content { flex-direction: column; gap: 1.5rem; padding-bottom: 1rem; }
+            .map-wrapper iframe { height: 350px; }
+        }
+
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #1A202C; display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease; }
+        .loading-spinner { width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.2); border-top: 3px solid #667eea; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="image-modal" id="imageModal">
+         <button class="close-modal" onclick="closeModal()">×</button>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Slikker Bags</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Premium American Tourister Collection</h1>
+                    <p>Discover the finest selection of bags and travel accessories at Slikker Bags. Quality, style, and durability in every piece.</p>
+                    <a href="#products" class="cta-button">Explore Our Collection</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about fade-in" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>About Slikker Bags</h2>
+                        <p>Located in the heart of Navi Mumbai, Slikker Bags is your premier destination for high-quality American Tourister bags and accessories. We pride ourselves on offering an extensive collection that combines style, durability, and functionality.</p>
+                        <p>Our expert team is dedicated to helping you find the perfect bag for every journey, whether it's a business trip, family vacation, or daily commute.</p>
+                    </div>
+                    <div class="shop-photos">
+                        <div class="shop-photo" onclick="openModal('Images/shop-front1.jpg', 'Slikker Bags Store Front')">
+                            <img src="Images/shop-front1.jpg" alt="Slikker Bags Store Front"/>
+                        </div>
+                        <div class="shop-photo" onclick="openModal('Images/shop-inner2.jpg', 'Inside Slikker Bags')">
+                            <img src="Images/shop-inner2.jpg" alt="Inside Slikker Bags"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="products fade-in" id="products">
+            <div class="container">
+                <h2 class="section-title">Our Premium Collection</h2>
+                <div class="product-grid-15">
+                     <div class="product-card" onclick="openModal('Images/Photo1.jpeg', 'American Tourister Backpack')"> <div class="product-image"> <img src="Images/Photo1.jpeg" alt="American Tourister Backpack"/></div> <div class="product-info"> <h3>American Tourister Backpack</h3> <p>Durable and stylish for daily use.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo2.jpeg', 'Travel Luggage Set')"> <div class="product-image"> <img src="Images/Photo2.jpeg" alt="Travel Luggage Set"/></div> <div class="product-info"> <h3>Travel Luggage Set</h3> <p>Perfect for long journeys.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo3.jpeg', 'Business Laptop Bag')"> <div class="product-image"> <img src="Images/Photo3.jpeg" alt="Business Laptop Bag"/></div> <div class="product-info"> <h3>Business Laptop Bag</h3> <p>Professional and secure.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo4.jpeg', 'Weekend Duffle Bag')"> <div class="product-image"> <img src="Images/Photo4.jpeg" alt="Weekend Duffle Bag"/></div> <div class="product-info"> <h3>Weekend Duffle Bag</h3> <p>Compact and convenient.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo5.jpeg', 'Rolling Suitcase')"> <div class="product-image"> <img src="Images/Photo5.jpeg" alt="Rolling Suitcase"/></div> <div class="product-info"> <h3>Rolling Suitcase</h3> <p>Smooth mobility and style.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo6.jpeg', 'School Backpack')"> <div class="product-image"> <img src="Images/Photo6.jpeg" alt="School Backpack"/></div> <div class="product-info"> <h3>School Backpack</h3> <p>Comfortable and spacious.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo7.jpeg', 'Gym Sports Bag')"> <div class="product-image"> <img src="Images/Photo7.jpeg" alt="Gym Sports Bag"/></div> <div class="product-info"> <h3>Gym Sports Bag</h3> <p>Durable for an active lifestyle.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo8.jpeg', 'Cabin Luggage')"> <div class="product-image"> <img src="Images/Photo8.jpeg" alt="Cabin Luggage"/></div> <div class="product-info"> <h3>Cabin Luggage</h3> <p>Perfect for air travel.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/Photo9.jpeg', 'Messenger Bag')"> <div class="product-image"> <img src="Images/Photo9.jpeg" alt="Messenger Bag"/></div> <div class="product-info"> <h3>Messenger Bag</h3> <p>Stylish urban companion.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/branded1.jpeg', 'Executive Briefcase')"> <div class="product-image"> <img src="Images/branded1.jpeg" alt="Executive Briefcase"/></div> <div class="product-info"> <h3>Executive Briefcase</h3> <p>Professional excellence.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/branded2.jpeg', 'Adventure Backpack')"> <div class="product-image"> <img src="Images/branded2.jpeg" alt="Adventure Backpack"/></div> <div class="product-info"> <h3>Adventure Backpack</h3> <p>Built for exploration.</p> </div> </div>
+                     <div class="product-card" onclick="openModal('Images/branded3.jpeg', 'Luxury Spinner Luggage')"> <div class="product-image"> <img src="Images/branded3.jpeg" alt="Luxury Spinner Luggage"/></div> <div class="product-info"> <h3>Luxury Spinner Luggage</h3> <p>Effortless travel experience.</p> </div> </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact fade-in" id="contact">
+            <div class="container">
+                <h2 class="section-title">Find Us & Get in Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i>📍</i>
+                            <div> <h3>Address</h3> <p> <a href="https://www.google.com/maps/search/?api=1&query=SLIKKER%20The%20bag%20studio%2C%20Shop%20no-12%2CShree%20Ram%20Krishna%20chs.ltd%2Cplot%20no-46%2647%20Opp%20Seawoods%20Grand%20central%20mall%2C%20sector-40%20Seawoods(W)%2C%20Navi%20Mumbai%2C%20Maharashtra%20400706" target="_blank" rel="noopener noreferrer" class="address-link"> Shop no-12, Shree Ram Krishna chs.ltd, plot no-46&47, Opp Seawoods Grand Central mall, sector-40 Seawoods(W), Navi Mumbai, Maharashtra 400706 </a> </p> </div>
+                        </div>
+                        <div class="contact-item"> <i>📞</i> <div> <h3>Phone</h3> <p>+91 98765 43210</p> </div> </div>
+                        <div class="contact-item"> <i>✉️</i> <div> <h3>Email</h3> <p>info@slikkerbags.com</p> </div> </div>
+                        <div class="contact-item"> <i>🕒</i> <div> <h3>Store Hours</h3> <p>Monday - Saturday: 10:00 AM - 8:00 PM<br>Sunday: 11:00 AM - 6:00 PM</p> </div> </div>
+                    </div>
+                    <div class="contact-form">
+                        <form>
+                            <div style="margin-bottom: 1rem;"> <input type="text" placeholder="Your Name"> </div>
+                            <div style="margin-bottom: 1rem;"> <input type="email" placeholder="Your Email"> </div>
+                            <div style="margin-bottom: 1rem;"> <textarea placeholder="Your Message" rows="5"></textarea> </div>
+                            <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="map-wrapper fade-in">
+                    <a href="https://www.google.com/maps/search/?api=1&query=SLIKKER%20The%20bag%20studio%2C%20Shop%20no-12%2CShree%20Ram%20Krishna%20chs.ltd%2Cplot%20no-46%2647%20Opp%20Seawoods%20Grand%20central%20mall%2C%20sector-40%20Seawoods(W)%2C%20Navi%20Mumbai%2C%20Maharashtra%20400706" class="map-overlay" target="_blank" rel="noopener noreferrer">
+                        <div class="map-button">Click to Open in Google Maps</div>
+                    </a>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.604723524227!2d73.0139886752044!3d19.03706348216174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c3b4498260d5%3A0x6b761806307373f7!2sSLIKKER%20The%20bag%20studio!5e0!3m2!1sen!2sus!4v1695055747683!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Slikker Bags. All rights reserved. | Premium American Tourister Collection | Navi Mumbai</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('load', () => {
+            const loading = document.getElementById('loading');
+            setTimeout(() => {
+                loading.style.opacity = '0';
+                setTimeout(() => loading.style.display = 'none', 500);
+            }, 500);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        
+        function openModal(imageSrc) {
+            const img = new Image();
+            img.src = imageSrc;
+            img.onload = () => modalImage.src = imageSrc;
+            img.onerror = () => modalImage.src = `https://placehold.co/800x600/e2e8f0/4a5568?text=Image+Not+Found`;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modal.addEventListener('click', e => (e.target === modal) && closeModal());
+        document.addEventListener('keydown', e => (e.key === 'Escape') && closeModal());
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
