@@ -43,7 +43,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: nowrap; /* Prevent logo/hamburger wrap on mobile */
         }
 
         .logo {
@@ -56,12 +55,6 @@
         @keyframes glow {
             from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
             to { text-shadow: 2px 2px 20px rgba(255,255,255,0.5); }
-        }
-
-        nav {
-            /* Adjust for mobile menu positioning */
-            width: auto; /* Default for desktop */
-            transition: max-height 0.3s ease-out; /* For smooth menu collapse */
         }
 
         nav ul {
@@ -96,26 +89,6 @@
 
         nav a:hover::after {
             width: 100%;
-        }
-
-        /* Hamburger Menu */
-        .hamburger-menu {
-            display: none; /* Hidden by default, shown on mobile */
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .hamburger-menu span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: white;
-            border-radius: 3px;
-            transition: all 0.3s ease-in-out;
         }
 
         /* Hero Section */
@@ -233,7 +206,7 @@
         }
 
         .shop-photo {
-            background: #e0e0e0; /* Slightly darker background for visibility if image fails */
+            background: #ddd;
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -332,7 +305,7 @@
         }
 
         .product-image {
-            background: #e0e0e0; /* Slightly darker background for visibility if image fails */
+            background: #f0f0f0;
             aspect-ratio: 4/3;
             display: flex;
             align-items: center;
@@ -506,7 +479,7 @@
             width: auto; /* Allow image to size naturally */
             max-width: 100%; /* Restrict width to container */
             /* Calculate max-height to fit within modal, accounting for header/footer and padding */
-            max-height: calc(90vh - 200px); 
+            max-height: calc(90vh - 200px); /* 90vh is modal height, ~200px for header/footer/padding */
             object-fit: contain; /* Ensures image fits without cropping */
             object-position: center;
             background: #f8f9fa; /* Background visible if image is smaller */
@@ -863,40 +836,14 @@
         /* Media query for mobile devices */
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: row; /* Keep logo and hamburger on one row */
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: nowrap; /* Prevent logo/hamburger wrap */
-            }
-
-            .logo {
-                font-size: 1.8rem;
-            }
-
-            .hamburger-menu {
-                display: flex; /* Show hamburger on mobile */
-            }
-
-            nav {
-                width: 100%; /* Take full width */
-                position: absolute;
-                top: 100%; /* Position below the header */
-                left: 0;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Same as header, or slightly different */
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                overflow: hidden;
-                max-height: 0; /* Hidden by default */
-            }
-
-            nav.nav-active {
-                max-height: 250px; /* Adjust as needed to show all links */
+                flex-direction: column;
+                gap: 1rem;
             }
 
             nav ul {
                 flex-direction: column;
-                gap: 0.5rem; /* Smaller gap for stacked links */
-                padding: 1rem 0; /* Add padding inside dropdown */
-                text-align: center;
+                gap: 0.8rem;
+                align-items: center; /* Center nav items */
             }
 
             .hero {
@@ -938,11 +885,6 @@
                 gap: 1rem;
             }
 
-            /* Added to ensure product images always have a minimum visible height on mobile */
-            .product-image, .shop-photo {
-                min-height: 120px; 
-            }
-
             .product-info h3 {
                 font-size: 1rem;
             }
@@ -958,10 +900,6 @@
             .modal-image {
                 max-height: calc(90vh - 120px); /* Adjust max-height for phones */
             }
-            .modal-body {
-                padding: 10px; /* Reduced padding for modal image on small screens */
-            }
-
 
             .modal-header {
                 padding: 15px;
@@ -1013,15 +951,15 @@
         /* Media query for very small mobile devices (e.g., iPhone 5/SE) */
         @media (max-width: 480px) {
             .logo {
-                font-size: 1.6rem; /* Even smaller logo */
+                font-size: 1.8rem;
             }
 
             nav ul {
-                gap: 0.4rem;
+                gap: 0.6rem;
             }
 
             nav a {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
 
             .hero h1 {
@@ -1038,7 +976,7 @@
             }
 
             .about-text h2, .section-title, .contact-info h2, .map-container h2, .contact-form h2 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
             }
 
             .shop-photo {
@@ -1048,23 +986,19 @@
             .product-grid-15, .product-grid-10 {
                 grid-template-columns: 1fr; /* Single column on very small screens */
             }
-            /* Added to ensure product images always have a minimum visible height on smallest mobile */
-            .product-image, .shop-photo {
-                min-height: 100px; 
-            }
             /* Responsive adjustments for modal image */
             .modal-image {
                 max-height: calc(90vh - 100px); /* Adjust max-height for very small screens */
             }
 
             .form-group input, .form-group textarea {
-                padding: 10px;
-                font-size: 0.85rem;
+                padding: 12px;
+                font-size: 0.9rem;
             }
 
             .submit-btn {
-                padding: 10px;
-                font-size: 0.9rem;
+                padding: 12px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -1099,13 +1033,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">Slikker Bags</div>
-                <!-- Hamburger Menu Icon -->
-                <div class="hamburger-menu" id="hamburgerMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav id="mainNav">
+                <nav>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
@@ -1514,7 +1442,7 @@
             },
             featured: {
                 images: [
-                    'Images/Photo1.jpeg', 'Images/Photo2.jpeg', 'Images/Photo3.jpeg', 'Images/Photo4.jpeg', 
+                    'Images/Photo1.jpeg', 'Images/Photo2.jpeg', 'Images/Photo3.jpeg', 'Images/Photo4.jpeg',
                     'Images/Photo5.jpeg', 'Images/Photo6.jpeg', 'Images/Photo7.jpeg', 'Images/Photo8.jpeg',
                     'Images/Photo9.jpeg', 'Images/Photo10.jpeg', 'Images/Photo11.jpeg', 'Images/Photo12.jpeg',
                     'Images/Photo13.jpeg', 'Images/Photo14.jpeg', 'Images/Photo15.jpeg'
@@ -1556,17 +1484,11 @@
         });
 
         // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    // Close mobile menu if open
-                    const mainNav = document.getElementById('mainNav');
-                    if (mainNav.classList.contains('nav-active')) {
-                        mainNav.classList.remove('nav-active');
-                    }
-
                     // Offset scroll for fixed header
                     const headerOffset = document.querySelector('header').offsetHeight;
                     const elementPosition = target.getBoundingClientRect().top;
@@ -1611,7 +1533,7 @@
             }
         });
 
-        // --- Modal Functionality ---
+        // --- Modal Functionality (Re-used by openSectionGallery) ---
         let currentSlideIndex = 0;
         let currentImages = [];
         let currentTitles = [];
@@ -1620,42 +1542,21 @@
         function openModal(images, titles, description, startIndex = 0) {
             const modal = document.getElementById('imageModal');
             const modalDescription = document.getElementById('modalDescription');
-            const modalImage = document.getElementById('modalImage');
-            const modalTitle = document.getElementById('modalTitle');
-            const indicatorsContainer = document.getElementById('sliderIndicators');
-            const prevBtn = document.querySelector('.slider-nav.prev');
-            const nextBtn = document.querySelector('.slider-nav.next');
             
             currentImages = images;
             currentTitles = titles;
             currentDescription = description;
-            currentSlideIndex = startIndex; 
+            currentSlideIndex = startIndex; // Use the provided starting index
             
             modalDescription.textContent = currentDescription; 
 
-            modalImage.src = currentImages[currentSlideIndex];
-            modalImage.alt = currentTitles[currentSlideIndex];
-            modalTitle.textContent = currentTitles[currentSlideIndex];
-            modalImage.style.opacity = '1';
+            updateSlide(); 
             
-            const showNav = currentImages.length > 1; 
-            indicatorsContainer.innerHTML = ''; 
-            if (showNav) {
-                currentImages.forEach((_, index) => {
-                    const indicator = document.createElement('div');
-                    indicator.className = `indicator ${index === currentSlideIndex ? 'active' : ''}`;
-                    indicator.onclick = () => goToSlide(index);
-                    indicatorsContainer.appendChild(indicator);
-                });
-            }
-            indicatorsContainer.style.display = showNav ? 'flex' : 'none';
-            prevBtn.style.display = showNav ? 'flex' : 'none';
-            nextBtn.style.display = showNav ? 'flex' : 'none';
-
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
+        // New function to open section-specific galleries
         function openSectionGallery(sectionName, startIndex) {
             const gallery = galleries[sectionName];
             if (gallery) {
@@ -1707,7 +1608,8 @@
             setTimeout(() => {
                 modalImage.src = currentImages[currentSlideIndex];
                 modalImage.alt = currentTitles[currentSlideIndex];
-                modalTitle.textContent = currentTitles[currentSlideIndex]; 
+                modalTitle.textContent = currentTitles[currentSlideIndex]; // Display current image's title
+
                 modalImage.style.opacity = '1';
 
                 indicatorsContainer.innerHTML = '';
@@ -1719,7 +1621,7 @@
                         indicatorsContainer.appendChild(indicator);
                     });
                 }
-            }, 300);
+            }, 300); 
         }
 
         document.getElementById('imageModal').addEventListener('click', function(e) {
@@ -1774,12 +1676,6 @@
                 header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
                 header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
             }
-        });
-
-        // --- Mobile Menu Toggle ---
-        document.getElementById('hamburgerMenu').addEventListener('click', function() {
-            const mainNav = document.getElementById('mainNav');
-            mainNav.classList.toggle('nav-active');
         });
     </script>
 </body>
