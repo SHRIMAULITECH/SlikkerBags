@@ -1544,7 +1544,7 @@
 
         // --- Main Script Logic ---
 
-        // Loading animation
+        // Loading animation and initial fade-in visibility check
         window.addEventListener('load', function() {
             const loading = document.getElementById('loading');
             setTimeout(() => {
@@ -1554,12 +1554,13 @@
                 }, 500);
             }, 1000);
 
-            // Ensure fade-in elements are visible if already in viewport on load
+            // Robust initial visibility check for fade-in elements
             const fadeInElements = document.querySelectorAll('.fade-in');
             fadeInElements.forEach(el => {
                 const rect = el.getBoundingClientRect();
-                // Check if element is at least partially in viewport upon load
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                // If element is within 150% of the initial viewport height (generous check)
+                // and its top is within viewport, and its bottom is within viewport
+                if (rect.top < window.innerHeight * 1.5 && rect.bottom > 0) { 
                     el.classList.add('visible');
                 }
             });
@@ -1593,10 +1594,10 @@
         // Scroll animations (for elements that are initially off-screen)
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -50px 0px' // Triggers when 50px from bottom of viewport
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -1605,8 +1606,9 @@
             });
         }, observerOptions);
 
+        // Observe elements that are still not visible after initial check on load
         document.querySelectorAll('.fade-in').forEach(el => {
-            // Only observe if not already visible by the initial check on load
+            // Only observe if it doesn't already have 'visible' from the onload check
             if (!el.classList.contains('visible')) {
                 observer.observe(el);
             }
