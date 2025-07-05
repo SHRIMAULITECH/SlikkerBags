@@ -16,7 +16,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden; /* Prevent horizontal scroll due to responsive elements */
+            overflow-x: hidden;
         }
 
         .container {
@@ -36,7 +36,7 @@
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
-            transition: background 0.3s ease, box-shadow 0.3s ease; /* For scroll effect */
+            transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         .header-content {
@@ -55,6 +55,15 @@
         @keyframes glow {
             from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
             to { text-shadow: 2px 2px 20px rgba(255,255,255,0.5); }
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu {
+            display: flex;
         }
 
         nav ul {
@@ -91,11 +100,21 @@
             width: 100%;
         }
 
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 120px 0 80px; /* Increased top padding to account for fixed header */
+            padding: 120px 0 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -218,7 +237,7 @@
             color: #666;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            cursor: pointer; /* Added cursor for clickability */
+            cursor: pointer;
             position: relative;
         }
 
@@ -403,14 +422,14 @@
             position: relative;
             width: 90%;
             max-width: 800px;
-            max-height: 90vh; /* Limits overall modal height */
+            max-height: 90vh;
             background: white;
             border-radius: 20px;
             overflow: hidden;
             transform: scale(0.8);
             transition: transform 0.3s ease;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            display: flex; /* Use flex to stack header, body, footer */
+            display: flex;
             flex-direction: column;
         }
 
@@ -458,34 +477,33 @@
         .modal-body {
             position: relative;
             background: white;
-            padding: 20px; /* Added padding around the image */
-            display: flex; /* For centering the slider */
+            padding: 20px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            flex-grow: 1; /* Allows it to take available vertical space */
-            overflow: hidden; /* Important for image scaling */
+            flex-grow: 1;
+            overflow: hidden;
         }
 
         .modal-slider {
             position: relative;
             width: 100%;
-            height: 100%; /* Occupy full space within modal-body */
+            height: 100%;
             display: flex;
-            align-items: center; /* Vertically center the image within the slider */
-            justify-content: center; /* Horizontally center the image within the slider */
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-image {
-            width: auto; /* Allow image to size naturally */
-            max-width: 100%; /* Restrict width to container */
-            /* Calculate max-height to fit within modal, accounting for header/footer and padding */
-            max-height: calc(90vh - 200px); /* 90vh is modal height, ~200px for header/footer/padding */
-            object-fit: contain; /* Ensures image fits without cropping */
+            width: auto;
+            max-width: 100%;
+            max-height: calc(90vh - 200px);
+            object-fit: contain;
             object-position: center;
-            background: #f8f9fa; /* Background visible if image is smaller */
+            background: #f8f9fa;
             display: block;
-            opacity: 1; /* Default opacity */
-            transition: opacity 0.3s ease-in-out; /* Added for fade effect */
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .slider-nav {
@@ -573,7 +591,7 @@
 
         .contact-item {
             display: flex;
-            align-items: flex-start; /* Changed to flex-start to align text with icon */
+            align-items: flex-start;
             margin-bottom: 1.5rem;
             padding: 1rem;
             background: rgba(255,255,255,0.1);
@@ -590,12 +608,14 @@
             font-size: 1.5rem;
             margin-right: 1rem;
             width: 30px;
-            margin-top: 5px; /* Added margin-top to vertically align icon with text */
+            margin-top: 5px;
         }
+
         .contact-item h3 {
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
         }
+
         .contact-item p {
             margin: 0;
             line-height: 1.5;
@@ -615,7 +635,7 @@
             border-radius: 50%;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1.2rem; /* Added font-size */
+            font-size: 1.2rem;
         }
 
         .social-link:hover {
@@ -788,7 +808,6 @@
         }
 
         /* Responsive Design */
-        /* Media query for tablets and smaller desktops */
         @media (max-width: 992px) {
             .container {
                 padding: 0 15px;
@@ -805,7 +824,7 @@
             .about-content, .contact-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
-                text-align: center; /* For about section text */
+                text-align: center;
             }
 
             .about-text h2::after {
@@ -814,11 +833,11 @@
             }
 
             .shop-photos {
-                grid-template-columns: 1fr; /* Stack photos on smaller screens */
+                grid-template-columns: 1fr;
             }
 
             .product-grid-15 {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Slightly smaller cards */
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
                 gap: 1.2rem;
             }
 
@@ -827,27 +846,57 @@
                 gap: 1.5rem;
             }
 
-            /* Responsive adjustments for modal image */
             .modal-image {
-                max-height: calc(90vh - 150px); /* Adjust max-height for tablets */
+                max-height: calc(90vh - 150px);
             }
         }
 
-        /* Media query for mobile devices */
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                gap: 1rem;
+                flex-direction: row;
+                align-items: center;
+                position: relative;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                transform: translateY(-10px);
+                opacity: 0;
+                z-index: 999;
+            }
+
+            .nav-menu.nav-active {
+                display: block;
+                transform: translateY(0);
+                opacity: 1;
             }
 
             nav ul {
                 flex-direction: column;
-                gap: 0.8rem;
-                align-items: center; /* Center nav items */
+                gap: 1rem;
+                align-items: center;
+            }
+
+            nav a {
+                font-size: 1.1rem;
+                padding: 0.5rem 1rem;
+                display: block;
             }
 
             .hero {
-                padding: 100px 0 60px; /* Adjust padding due to sticky header and smaller content */
+                padding: 100px 0 60px;
             }
 
             .hero h1 {
@@ -864,7 +913,7 @@
             }
 
             .about, .products, .contact, .map-section {
-                padding: 60px 0; /* Reduce section padding */
+                padding: 60px 0;
             }
 
             .about-text h2, .section-title, .contact-info h2, .map-container h2, .contact-form h2 {
@@ -876,7 +925,7 @@
             }
 
             .product-grid-15 {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Even smaller cards */
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
                 gap: 0.8rem;
             }
 
@@ -896,9 +945,9 @@
             .modal-content {
                 width: 95%;
             }
-            /* Responsive adjustments for modal image */
+
             .modal-image {
-                max-height: calc(90vh - 120px); /* Adjust max-height for phones */
+                max-height: calc(90vh - 120px);
             }
 
             .modal-header {
@@ -932,7 +981,7 @@
             .contact-item {
                 flex-direction: column;
                 text-align: center;
-                align-items: center; /* Center icon when stacked */
+                align-items: center;
             }
 
             .contact-item i {
@@ -940,22 +989,17 @@
             }
 
             .social-links {
-                justify-content: center; /* Center social links */
+                justify-content: center;
             }
 
             .map-frame {
-                height: 300px; /* Smaller map height */
+                height: 300px;
             }
         }
 
-        /* Media query for very small mobile devices (e.g., iPhone 5/SE) */
         @media (max-width: 480px) {
             .logo {
                 font-size: 1.8rem;
-            }
-
-            nav ul {
-                gap: 0.6rem;
             }
 
             nav a {
@@ -980,15 +1024,15 @@
             }
 
             .shop-photo {
-                aspect-ratio: 16/9; /* Make photos wider on small screens */
+                aspect-ratio: 16/9;
             }
 
             .product-grid-15, .product-grid-10 {
-                grid-template-columns: 1fr; /* Single column on very small screens */
+                grid-template-columns: 1fr;
             }
-            /* Responsive adjustments for modal image */
+
             .modal-image {
-                max-height: calc(90vh - 100px); /* Adjust max-height for very small screens */
+                max-height: calc(90vh - 100px);
             }
 
             .form-group input, .form-group textarea {
@@ -1034,12 +1078,15 @@
             <div class="header-content">
                 <div class="logo">Slikker Bags</div>
                 <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                    <button class="hamburger">☰</button>
+                    <div class="nav-menu">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#products">Products</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -1408,7 +1455,6 @@
             <div class="map-container">
                 <h2>Find Us</h2>
                 <p>Located conveniently opposite Seawoods Grand Central Mall</p>
-                <!-- IMPORTANT: Replace the iframe src with the actual embed code for Slikker Bags location from Google Maps -->
                 <iframe 
                     class="map-frame"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.712736436213!2d73.01567931744384!3d19.018555799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e8f5b1234567%3A0x1234567890abcdef!2sSeawoods%20Grand%20Central%20Mall!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
@@ -1483,43 +1529,54 @@
             }, 1000);
         });
 
-        // Smooth scrolling for navigation links
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-active');
+            hamburger.textContent = navMenu.classList.contains('nav-active') ? '×' : '☰';
+        });
+
+        // Smooth scrolling for navigation links and close menu on click
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    // Offset scroll for fixed header
                     const headerOffset = document.querySelector('header').offsetHeight;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
                     window.scrollTo({
-                         top: offsetPosition,
-                         behavior: "smooth"
+                        top: offsetPosition,
+                        behavior: "smooth"
                     });
+
+                    // Close the menu on mobile after clicking a link
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('nav-active');
+                        hamburger.textContent = '☰';
+                    }
                 }
             });
         });
 
-        // --- CORRECTED/IMPROVED Scroll Animation Logic ---
+        // Scroll Animation Logic
         const observerOptions = {
-            threshold: window.innerWidth <= 768 ? 0.05 : 0.1, // Lower threshold for mobile
-            rootMargin: window.innerWidth <= 768 ? '0px 0px -100px 0px' : '0px 0px -50px 0px' // Larger margin for mobile
+            threshold: window.innerWidth <= 768 ? 0.05 : 0.1,
+            rootMargin: window.innerWidth <= 768 ? '0px 0px -100px 0px' : '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all elements with the 'fade-in' class
         document.querySelectorAll('.fade-in').forEach(el => {
-            // Check if element is already in viewport on load
             const rect = el.getBoundingClientRect();
             const isInViewport = (
                 rect.top >= 0 &&
@@ -1527,13 +1584,13 @@
             );
             if (isInViewport) {
                 el.classList.add('visible');
-                observer.unobserve(el); // No need to observe if already visible
+                observer.unobserve(el);
             } else {
                 observer.observe(el);
             }
         });
 
-        // --- Modal Functionality (Re-used by openSectionGallery) ---
+        // Modal Functionality
         let currentSlideIndex = 0;
         let currentImages = [];
         let currentTitles = [];
@@ -1546,17 +1603,15 @@
             currentImages = images;
             currentTitles = titles;
             currentDescription = description;
-            currentSlideIndex = startIndex; // Use the provided starting index
+            currentSlideIndex = startIndex;
             
-            modalDescription.textContent = currentDescription; 
-
-            updateSlide(); 
+            modalDescription.textContent = currentDescription;
+            updateSlide();
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // New function to open section-specific galleries
         function openSectionGallery(sectionName, startIndex) {
             const gallery = galleries[sectionName];
             if (gallery) {
@@ -1608,8 +1663,7 @@
             setTimeout(() => {
                 modalImage.src = currentImages[currentSlideIndex];
                 modalImage.alt = currentTitles[currentSlideIndex];
-                modalTitle.textContent = currentTitles[currentSlideIndex]; // Display current image's title
-
+                modalTitle.textContent = currentTitles[currentSlideIndex];
                 modalImage.style.opacity = '1';
 
                 indicatorsContainer.innerHTML = '';
@@ -1621,7 +1675,7 @@
                         indicatorsContainer.appendChild(indicator);
                     });
                 }
-            }, 300); 
+            }, 300);
         }
 
         document.getElementById('imageModal').addEventListener('click', function(e) {
@@ -1647,7 +1701,7 @@
             }
         });
 
-        // Contact form handling (client-side simulation)
+        // Contact form handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1670,7 +1724,7 @@
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(102, 126, 234, 0.95)'; 
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
                 header.style.boxShadow = '0 5px 25px rgba(0,0,0,0.2)';
             } else {
                 header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
