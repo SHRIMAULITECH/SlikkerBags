@@ -43,8 +43,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            /* Added for mobile menu: */
-            flex-wrap: wrap; /* Allows items to wrap onto next line */
+            flex-wrap: nowrap; /* Prevent logo/hamburger wrap on mobile */
         }
 
         .logo {
@@ -107,7 +106,7 @@
             width: 30px;
             height: 25px;
             cursor: pointer;
-            z-index: 1001; /* Above nav if using position absolute */
+            z-index: 1001;
         }
 
         .hamburger-menu span {
@@ -234,7 +233,7 @@
         }
 
         .shop-photo {
-            background: #ddd;
+            background: #e8e8e8; /* Slightly darker background for visibility if image fails */
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -333,7 +332,7 @@
         }
 
         .product-image {
-            background: #f0f0f0;
+            background: #e8e8e8; /* Slightly darker background for visibility if image fails */
             aspect-ratio: 4/3;
             display: flex;
             align-items: center;
@@ -939,6 +938,11 @@
                 gap: 1rem;
             }
 
+            /* Added to ensure product images always have a minimum visible height on mobile */
+            .product-image, .shop-photo {
+                min-height: 120px; 
+            }
+
             .product-info h3 {
                 font-size: 1rem;
             }
@@ -954,6 +958,10 @@
             .modal-image {
                 max-height: calc(90vh - 120px); /* Adjust max-height for phones */
             }
+            .modal-body {
+                padding: 10px; /* Reduced padding for modal image on small screens */
+            }
+
 
             .modal-header {
                 padding: 15px;
@@ -1039,6 +1047,10 @@
 
             .product-grid-15, .product-grid-10 {
                 grid-template-columns: 1fr; /* Single column on very small screens */
+            }
+            /* Added to ensure product images always have a minimum visible height on smallest mobile */
+            .product-image, .shop-photo {
+                min-height: 100px; 
             }
             /* Responsive adjustments for modal image */
             .modal-image {
